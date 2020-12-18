@@ -1,0 +1,21 @@
+spring:
+  profiles.active: dev
+  
+---
+spring:
+  profiles: dev
+  db.session.enabled: true
+  datasource:
+    jdbc-url: jdbc:mysql://localhost:3306/effort_tracker
+    username: root
+    password: root
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate.ddl-auto: update
+    generate-ddl: true
+    show-sql: true
+    properties:
+      hibernate.id.new_generator_mappings: false
+---
+cron-schedule: quartz2://timer?cron=0+0/10+*+*+*+?
+camel.springboot.main-run-controller: true
